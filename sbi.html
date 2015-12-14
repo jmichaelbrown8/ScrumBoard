@@ -1,0 +1,24 @@
+<style>
+	.sbi {
+		background-color: yellow;
+		width: 100px;
+		height: 80px;
+		cursor: move;
+		box-shadow: 1px 1px 1px gray;
+		position: relative;
+	}
+	.sbi-front {
+		height: 100%;
+		overflow-x: hidden;
+		overflow-y: auto;
+	}
+	.sbi:hover {
+		box-shadow: 2px 2px 2px gray;
+	}
+</style>
+<div class="sbi">
+	<div class="sbi-front" contenteditable>
+		Task to be completed
+	</div>
+	<i class="close fa fa-times-circle"></i>
+</div>
