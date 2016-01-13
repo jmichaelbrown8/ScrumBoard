@@ -1,46 +1,10 @@
-<style>
-	.pbi {
-		box-shadow: 1px 1px 2px gray; 
-		width: 250px; 
-		height: 150px;
-		border: 1px solid #eee;
-		cursor: move;
-		position: relative;
-		padding-top: 20px;
-	}
-	.pbi:hover {
-		box-shadow: 4px 5px 5px gray; 
-	}
-	.pbi-front {
-		width:100%;
-		height:100%;
-		background-color: #fff; 
-		background-image: 
-		linear-gradient(#ddf .1em, transparent .1em);
-		background-size: 100% 1.2em;
-		overflow-x: hidden;
-		overflow-y: auto;
-	}
-	.pbi-back {
-		width: 100%;
-		height: 100%;
-		display: none;
-	}
-	.value {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-	}
-	.size {
-		position: absolute;
-		bottom: 0;
-		right: 0;
-	}
-</style>
 <div class="pbi">
 	<div class="pbi-front">
 	
-	<i class="close fa fa-times-circle"></i>
+		<i class="remove fa fa-remove"></i>
+		<i class="handle fa fa-reorder"></i>
+		<i class="flip fa fa-rotate-left"></i>
+		
 		<div contenteditable>Who</div>
 		<div contenteditable>What</div>
 		<div contenteditable>Why</div>
