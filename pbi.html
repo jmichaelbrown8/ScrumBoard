@@ -1,13 +1,14 @@
-<div class="pbi">
+<div class="pbi" data-ng-controller="ProductBacklogItem">
 	<div class="pbi-front">
 	
-		<i class="remove fa fa-remove"></i>
+		<i class="remove fa fa-remove" ng-click="deletePbi(pbi._id)"></i>
 		<i class="handle fa fa-reorder"></i>
 		<i class="flip fa fa-rotate-left"></i>
 		
-		<div contenteditable>Who</div>
-		<div contenteditable>What</div>
-		<div contenteditable>Why</div>
+		<div contenteditable ng-model="pbi.who" ng-bind="pbi.who"></div>
+		<div contenteditable ng-model="pbi.what"></div>
+		<div contenteditable ng-model="pbi.why"></div>
+		{{pbi.who}}
 		<div class="value">
 			<select>
 				<option>Value</option>

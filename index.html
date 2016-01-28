@@ -7,12 +7,12 @@
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
 <script src="app.js"></script>
 </head>
-<body ng-app="">
+<body ng-app="ScrumBoard">
 
-<div class="product_backlog">
-	Product Backlog <i class="fa fa-plus add"></i>
+<div class="product_backlog" data-ng-controller="ProductBacklog">
+	Product Backlog <i class="fa fa-plus add" ng-click="createPbi()"></i>
 	<hr>
-	<div ng-include="'pbi.html'"></div>
+	<div ng-repeat="pbi in pbis" ng-include="'pbi.html'"></div>
 </div>
 
 <!--
