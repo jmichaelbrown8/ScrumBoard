@@ -89,9 +89,6 @@ body, div, span {
 	padding-bottom: 22px;
 	margin-bottom: 10px;
 }
-.pbi:hover {
-	box-shadow: 4px 5px 5px gray; 
-}
 .pbi-front {
 	width:100%;
 	height:100%;
@@ -103,20 +100,32 @@ body, div, span {
 .pbi-back {
 	width: 100%;
 	height: 100%;
-	display: none;
+}
+.who, .what, .why {
+	margin-bottom: 5px;
+	padding: 2px;
 }
 .who {
 	background-color: #FFFED3;
 	margin-bottom: 5px;
 }
+.who:before {
+	content: 'WHO: ';
+}
 .what {
 	background-color: #DAECE0;
 	margin-bottom: 5px;
+}
+.what:before {
+	content: 'WHAT: ';
 }
 .why {
 	background-color: #FFD9D3;
 	margin-bottom: 5px;
 
+}
+.why:before {
+	content: 'WHY: ';
 }
 .value {
 	position: absolute;

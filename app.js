@@ -1,6 +1,6 @@
 var app = angular.module("ScrumBoard", []);
 
-app.controller("ProductBacklog", function($scope, $http) {
+app.controller("ProductBacklog", function($scope, $http, $window) {
 	
 	$scope.pbis = [];
 
@@ -25,6 +25,8 @@ app.controller("ProductBacklog", function($scope, $http) {
 	};
 
 	$scope.deletePbi = function(id){
+    if (!$window.confirm('Are you sure you want to delete this PBI? *This can not be reversed.'))
+      return;
 		$http.delete('/api/v1/pbi/' + id).success($scope.loadPbis);
 	};
 
@@ -41,6 +43,10 @@ app.controller("ProductBacklogItem", function($scope, $http){
 
     });
 	};
+
+  $scope.flip = function() {
+    $scope.pbi.flip = !$scope.pbi.flip;
+  };
 
 });
 

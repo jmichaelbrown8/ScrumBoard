@@ -1,9 +1,9 @@
 <div class="pbi" data-ng-controller="ProductBacklogItem">
-	<div class="pbi-front">
-	
 		<i class="remove fa fa-remove" ng-click="deletePbi(pbi._id)"></i>
 		<i class="handle fa fa-reorder"></i>
-		<i class="flip fa fa-rotate-left"></i>
+		<i class="flip fa fa-rotate-left" ng-click="flip(pbi)"></i>
+	<div class="pbi-front" ng-show="!pbi.flip">
+	
 		
 		<div class="who" contenteditable ng-model="pbi.who"></div>
 		<div class="what" contenteditable ng-model="pbi.what"></div>
@@ -26,7 +26,7 @@
 			</select>
 		</div>
 	</div>
-	<div class="pbi-back">
+	<div class="pbi-back" ng-show="pbi.flip">
 		<div>Definitions of Done:</div>
 		<ol>
 			<li contenteditable>Tests</li>
