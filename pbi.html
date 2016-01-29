@@ -5,25 +5,24 @@
 		<i class="handle fa fa-reorder"></i>
 		<i class="flip fa fa-rotate-left"></i>
 		
-		<div contenteditable ng-model="pbi.who" ng-bind="pbi.who"></div>
-		<div contenteditable ng-model="pbi.what"></div>
-		<div contenteditable ng-model="pbi.why"></div>
-		{{pbi.who}}
+		<div class="who" contenteditable ng-model="pbi.who"></div>
+		<div class="what" contenteditable ng-model="pbi.what"></div>
+		<div class="why" contenteditable ng-model="pbi.why"></div>
 		<div class="value">
-			<select>
-				<option>Value</option>
-				<option>$$$$</option>
-				<option>$$$</option>
-				<option>$$</option>
-				<option>$</option>
+			<select ng-model="pbi.value" ng-change="updatePbi(pbi)">
+				<option value="">Value</option>
+				<option value="$$$$">$$$$</option>
+				<option value="$$$">$$$</option>
+				<option value="$$">$$</option>
+				<option value="$">$</option>
 			</select>
 		</div>
 		<div class="size">
-			<select>
-				<option>Size</option>
-				<option>S</option>
-				<option>M</option>
-				<option>L</option>
+			<select ng-model="pbi.size" ng-change="updatePbi(pbi)">
+				<option value="">Size</option>
+				<option value="S">S</option>
+				<option value="M">M</option>
+				<option value="L">L</option>
 			</select>
 		</div>
 	</div>

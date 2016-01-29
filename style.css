@@ -1,5 +1,6 @@
 body, input, select{
 	font-family: "Comic Sans MS", cursive, sans-serif;
+	font-size: 12px;
 }
 input, select {
 	border: none;
@@ -85,8 +86,8 @@ body, div, span {
 	height: 150px;
 	border: 1px solid #eee;
 	position: relative;
-	padding-top: 20px;
-	padding-bottom: 20px;
+	padding-bottom: 22px;
+	margin-bottom: 10px;
 }
 .pbi:hover {
 	box-shadow: 4px 5px 5px gray; 
@@ -103,6 +104,19 @@ body, div, span {
 	width: 100%;
 	height: 100%;
 	display: none;
+}
+.who {
+	background-color: #FFFED3;
+	margin-bottom: 5px;
+}
+.what {
+	background-color: #DAECE0;
+	margin-bottom: 5px;
+}
+.why {
+	background-color: #FFD9D3;
+	margin-bottom: 5px;
+
 }
 .value {
 	position: absolute;

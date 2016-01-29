@@ -14,7 +14,11 @@ app.controller("ProductBacklog", function($scope, $http) {
 	$scope.createPbi = function(){
 		$http.post('/api/v1/pbi', 
 			{
-				'what': 'new item'
+        'who': 'who',
+				'what': 'what',
+        'why': 'why',
+        'value': '',
+        'size': ''
 			}).success(function(data){
 				$scope.pbis.push(data);
 			});
@@ -33,46 +37,33 @@ app.controller("ProductBacklogItem", function($scope, $http){
 	$scope.pbi = $scope.$parent.$parent.pbi;
 
 	$scope.updatePbi = function(pbi){
-		$http.post('/api/v1/pbi/' + pbi._id, pbi).success();
-	};
+		$http.post('/api/v1/pbi/' + pbi._id, pbi).success(function(data){
 
-	$scope.$watch('pbi.who', function(data){
-		alert(data);
-	});
+    });
+	};
 
 });
 
-app.directive('contenteditable', ['$sce', function($sce) {
+app.directive("contenteditable", function() {
   return {
-    restrict: 'A', // only activate on element attribute
-    require: '?ngModel', // get a hold of NgModelController
-    scope: {
-    	ngBind: '@'
-    },
+    restrict: "A",
+    require: "?ngModel",
     link: function(scope, element, attrs, ngModel) {
-      if (!ngModel) return; // do nothing if no ng-model
+      if (!ngModel)
+        return;
 
-      // Specify how UI should be updated
+      function read() {
+        ngModel.$setViewValue(element.html());
+      }
+
       ngModel.$render = function() {
-        element.html($sce.getTrustedHtml(ngModel.$viewValue || ''));
+        element.html(ngModel.$viewValue || "");
       };
 
-      // Listen for change events to enable binding
-      element.on('blur', function() {
-        scope.$evalAsync(read);
+      element.bind("blur", function() {
+        scope.$apply(read);
+        scope.updatePbi(scope.pbi);
       });
-      read(); // initialize
-
-      // Write data to the model
-      function read(first) {
-        var html = element.html();
-        // When we clear the content editable the browser leaves a <br> behind
-        // If strip-br attribute is provided then we strip this out
-        if ( attrs.stripBr && html == '<br>' ) {
-          html = '';
-        }
-        ngModel.$setViewValue(html);
-      }
     }
   };
-}]);
+});
