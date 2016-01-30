@@ -18,14 +18,15 @@ app.controller("ProductBacklog", function($scope, $http, $window) {
 				'what': 'what',
         'why': 'why',
         'value': '',
-        'size': ''
+        'size': '',
+        'acceptanceCriteria': ['one', 'two', 'three']
 			}).success(function(data){
 				$scope.pbis.push(data);
 			});
 	};
 
 	$scope.deletePbi = function(id){
-    if (!$window.confirm('Are you sure you want to delete this PBI? *This can not be reversed.'))
+    if (!$window.confirm('Are you sure you want to delete this PBI?\n\n*This can not be reversed.'))
       return;
 		$http.delete('/api/v1/pbi/' + id).success($scope.loadPbis);
 	};
@@ -46,6 +47,15 @@ app.controller("ProductBacklogItem", function($scope, $http){
 
   $scope.flip = function() {
     $scope.pbi.flip = !$scope.pbi.flip;
+  };
+
+  $scope.removeAcceptanceCriteria = function(i) {
+    $scope.pbi.acceptanceCriteria.splice(i, 1);
+    $scope.updatePbi($scope.pbi);
+  };
+
+  $scope.addAcceptanceCriteria = function() {
+    $scope.pbi.acceptanceCriteria.push('');
   };
 
 });

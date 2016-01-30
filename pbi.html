@@ -1,7 +1,7 @@
 <div class="pbi" data-ng-controller="ProductBacklogItem">
-		<i class="remove fa fa-remove" ng-click="deletePbi(pbi._id)"></i>
-		<i class="handle fa fa-reorder"></i>
-		<i class="flip fa fa-rotate-left" ng-click="flip(pbi)"></i>
+		<i class="remove fa fa-remove fa-2x" ng-click="deletePbi(pbi._id)"></i>
+		<i class="handle fa fa-reorder fa-2x"></i>
+		<i class="flip fa fa-rotate-left fa-2x" ng-click="flip(pbi)"></i>
 	<div class="pbi-front" ng-show="!pbi.flip">
 	
 		
@@ -10,7 +10,7 @@
 		<div class="why" contenteditable ng-model="pbi.why"></div>
 		<div class="value">
 			<select ng-model="pbi.value" ng-change="updatePbi(pbi)">
-				<option value="">Value</option>
+				<option value="">VALUE</option>
 				<option value="$$$$">$$$$</option>
 				<option value="$$$">$$$</option>
 				<option value="$$">$$</option>
@@ -19,7 +19,7 @@
 		</div>
 		<div class="size">
 			<select ng-model="pbi.size" ng-change="updatePbi(pbi)">
-				<option value="">Size</option>
+				<option value="">SIZE</option>
 				<option value="S">S</option>
 				<option value="M">M</option>
 				<option value="L">L</option>
@@ -27,11 +27,12 @@
 		</div>
 	</div>
 	<div class="pbi-back" ng-show="pbi.flip">
-		<div>Definitions of Done:</div>
-		<ol>
-			<li contenteditable>Tests</li>
-			<li>1 Revision</li>
-			<li>Documentation</li>
-		</ol>
+		<div style="margin-bottom: 10px;">DEFINITIONS OF DONE:</div>
+		<div ng-repeat="item in pbi.acceptanceCriteria track by $index" style="clear: both; margin-bottom: 10px;">
+			<span style="float: left;">{{$index + 1}}.&nbsp;</span>
+			<i style="float: right; margin-right: 5px; cursor: pointer; color: red;" class="fa fa-close fa-2x" ng-click="removeAcceptanceCriteria($index)"></i>
+			<div contenteditable ng-model="pbi.acceptanceCriteria[$index]"></div>
+		</div>
+		<i class="fa fa-plus add fa-2x" style="clear: both; float: right; margin-right: 5px;" ng-click="addAcceptanceCriteria()"></i>
 	</div>
 </div>
