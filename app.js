@@ -4,6 +4,19 @@ app.controller("ProductBacklog", function($scope, $http, $window) {
 	
 	$scope.pbis = [];
 
+  $scope.locked = $window.location.hash != '#/edit';
+
+  $scope.lock = function(){
+    if ($scope.locked) {
+        $window.location.hash = 'edit';
+        $scope.locked = false;
+      }
+    else {
+      $window.location.hash = '';
+      $scope.locked = true;
+    }
+  };
+
 	$scope.loadPbis = function(){
 
 		$http.get('/api/v1/pbis').success(function(data){

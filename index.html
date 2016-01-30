@@ -13,7 +13,7 @@
 <body ng-app="ScrumBoard">
 
 <div class="product_backlog" data-ng-controller="ProductBacklog">
-	<h1>Product Backlog <i class="fa fa-plus add" ng-click="createPbi()"></i> </h1>
+	<h1>Product Backlog <i ng-class="locked ? 'fa fa-lock' : 'fa fa-unlock'" style="cursor: pointer;" ng-click="lock()"></i> <i ng-if="!locked" class="fa fa-plus add" ng-click="createPbi()"></i> </h1>
 	<hr>
 	<div ng-repeat="pbi in pbis" ng-include="'pbi.html'"></div>
 </div>

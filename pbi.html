@@ -1,14 +1,14 @@
 <div class="pbi" data-ng-controller="ProductBacklogItem">
-		<i class="remove fa fa-remove fa-2x" ng-click="deletePbi(pbi._id)"></i>
-		<i class="handle fa fa-reorder fa-2x"></i>
+		<i ng-if="!locked" class="remove fa fa-remove fa-2x" ng-click="deletePbi(pbi._id)"></i>
+		<i ng-if="!locked" class="handle fa fa-reorder fa-2x"></i>
 		<i class="flip fa fa-rotate-left fa-2x" ng-click="flip(pbi)"></i>
 	<div class="pbi-front" ng-show="!pbi.flip">
 	
-		
-		<div class="who" contenteditable ng-model="pbi.who"></div>
-		<div class="what" contenteditable ng-model="pbi.what"></div>
-		<div class="why" contenteditable ng-model="pbi.why"></div>
-		<div class="value">
+		<!-- unlocked -->
+		<div ng-if="!locked" class="who" contenteditable ng-model="pbi.who"></div>
+		<div ng-if="!locked" class="what" contenteditable ng-model="pbi.what"></div>
+		<div ng-if="!locked" class="why" contenteditable ng-model="pbi.why"></div>
+		<div ng-if="!locked" class="value">
 			<select ng-model="pbi.value" ng-change="updatePbi(pbi)">
 				<option value="">VALUE</option>
 				<option value="$$$$">$$$$</option>
@@ -17,7 +17,7 @@
 				<option value="$">$</option>
 			</select>
 		</div>
-		<div class="size">
+		<div ng-if="!locked" class="size">
 			<select ng-model="pbi.size" ng-change="updatePbi(pbi)">
 				<option value="">SIZE</option>
 				<option value="S">S</option>
@@ -25,14 +25,26 @@
 				<option value="L">L</option>
 			</select>
 		</div>
+
+<!-- locked -->
+		<div ng-if="locked" class="who" ng-bind="pbi.who"></div>
+		<div ng-if="locked" class="what" ng-bind="pbi.what"></div>
+		<div ng-if="locked" class="why" ng-bind="pbi.why"></div>
+		<div ng-if="locked" class="value" ng-bind="pbi.value" ></div>
+		<div ng-if="locked" class="size" ng-bind="pbi.size" ></div>
+
+
 	</div>
+
+
 	<div class="pbi-back" ng-show="pbi.flip">
 		<div style="margin-bottom: 10px;">DEFINITIONS OF DONE:</div>
 		<div ng-repeat="item in pbi.acceptanceCriteria track by $index" style="clear: both; margin-bottom: 10px;">
 			<span style="float: left;">{{$index + 1}}.&nbsp;</span>
-			<i style="float: right; margin-right: 5px; cursor: pointer; color: red;" class="fa fa-close fa-2x" ng-click="removeAcceptanceCriteria($index)"></i>
-			<div contenteditable ng-model="pbi.acceptanceCriteria[$index]"></div>
+			<i ng-if="!locked" style="float: right; margin-right: 5px; cursor: pointer; color: red;" class="fa fa-close fa-2x" ng-click="removeAcceptanceCriteria($index)"></i>
+			<div ng-if="!locked" contenteditable ng-model="pbi.acceptanceCriteria[$index]"></div>
+			<div ng-if="locked" ng-bind="pbi.acceptanceCriteria[$index]"></div>
 		</div>
-		<i class="fa fa-plus add fa-2x" style="clear: both; float: right; margin-right: 5px;" ng-click="addAcceptanceCriteria()"></i>
+		<i ng-if="!locked" class="fa fa-plus add fa-2x" style="clear: both; float: right; margin-right: 5px;" ng-click="addAcceptanceCriteria()"></i>
 	</div>
 </div>
