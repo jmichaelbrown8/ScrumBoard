@@ -76,6 +76,7 @@ body, div, span {
 	border: 1px solid #eee;
 	position: relative;
 	margin-bottom: 10px;
+	background-color: white;
 }
 .pbi-front {
 	width:100%;

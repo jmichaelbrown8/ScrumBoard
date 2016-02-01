@@ -1,10 +1,21 @@
-var app = angular.module("ScrumBoard", []);
+var app = angular.module("ScrumBoard", ['as.sortable']);
 
 app.controller("ProductBacklog", function($scope, $http, $window) {
 	
 	$scope.pbis = [];
 
   $scope.locked = $window.location.hash != '#/edit';
+
+
+  $scope.dragControlListeners = {
+    accept: function (sourceItemHandleScope, destSortableScope) {return true;},//override to determine drag is allowed or not. default is true.
+    itemMoved: function (event) {
+      alert('item moved');
+    },
+    orderChanged: function(event) {
+      alert('order changed');
+    }
+  };
 
   $scope.lock = function(){
     if ($scope.locked) {

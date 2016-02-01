@@ -15,7 +15,15 @@
 <div class="product_backlog" data-ng-controller="ProductBacklog">
 	<h1>Product Backlog <i ng-class="locked ? 'fa fa-lock' : 'fa fa-unlock'" style="cursor: pointer;" ng-click="lock()"></i> <i ng-if="!locked" class="fa fa-plus add" ng-click="createPbi()"></i> </h1>
 	<hr>
-	<div ng-repeat="pbi in pbis" ng-include="'pbi.html'"></div>
+	<ul data-as-sortable="board.dragControlListeners" data-ng-model="pbis">
+		<li data-ng-repeat="pbi in pbis" data-as-sortable-item>
+			<div data-as-sortable-item-handle>
+				<i ng-if="!locked" class="fa fa-reorder fa-2x"></i>
+			</div>
+
+				<div ng-include="'pbi.html'"></div>
+		</li>
+	</ul>
 </div>
 
 <!--
